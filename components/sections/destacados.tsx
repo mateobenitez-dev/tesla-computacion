@@ -32,7 +32,7 @@ export function Destacados({
         href: "/pcs-armadas",
       })),
     ...productos
-      .filter((p) => p.destacado && p.categoria !== "mother")
+      .filter((p) => p.destacado)
       .map((p) => ({
         id: p.id,
         nombre: p.nombre,

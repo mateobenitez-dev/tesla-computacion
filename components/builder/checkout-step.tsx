@@ -42,7 +42,7 @@ export function CheckoutStep({
       value: store.cpu,
       gama: store.cpu_gama && GAMA_LABEL[store.cpu_gama],
     },
-    { label: "Memoria RAM", value: `${store.ram_cap} ${store.ram_tech}` },
+    { label: "Memoria RAM", value: store.ram_cap },
     {
       label: "Placa de Video",
       value: store.gpu || "No seleccionada",
@@ -85,7 +85,7 @@ export function CheckoutStep({
 
     const msg = `Hola, quiero una PC (${store.uso}${store.nivel ? `, Nivel ${GAMA_LABEL[store.nivel]}` : ""}) con:
 - Procesador: ${store.cpu}${store.cpu_gama ? ` (Gama ${GAMA_LABEL[store.cpu_gama]})` : ""}
-- Memoria RAM: ${store.ram_cap} ${store.ram_tech}
+- Memoria RAM: ${store.ram_cap}
 - Placa de Video: ${store.gpu || "Sin definir"}${store.gpu_gama ? ` (Gama ${GAMA_LABEL[store.gpu_gama]})` : ""}
 - Gabinete: ${store.gabinete || "Sin definir"}${store.gabinete_gama ? ` (Gama ${GAMA_LABEL[store.gabinete_gama]})` : ""}
 - Almacenamiento: ${almacenamientoTxt}

@@ -287,9 +287,7 @@ export function BuilderWizard({ productos }: { productos: Producto[] }) {
 
         {step === 3 && (
           <StepRam
-            techSelected={store.ram_tech}
             capSelected={store.ram_cap}
-            onTech={store.setRamTech}
             onCap={store.setRamCap}
             onNext={() => setStep(4)}
           />
@@ -666,15 +664,11 @@ function ProductCard({
 }
 
 function StepRam({
-  techSelected,
   capSelected,
-  onTech,
   onCap,
   onNext,
 }: {
-  techSelected: string;
   capSelected: string;
-  onTech: (t: "DDR4" | "DDR5") => void;
   onCap: (c: string, price: number) => void;
   onNext: () => void;
 }) {
@@ -687,31 +681,10 @@ function StepRam({
       </p>
 
       <p className="mb-2 text-xs font-bold tracking-wide text-[#8b9bb4] uppercase">
-        Tecnología base
-      </p>
-      <div className="mb-6 flex flex-wrap gap-2">
-        {(["DDR4", "DDR5"] as const).map((t) => (
-          <motion.button
-            key={t}
-            onClick={() => onTech(t)}
-            whileTap={{ scale: 0.95 }}
-            className={cn(
-              "rounded-xl border px-5 py-3 text-sm font-semibold transition-colors",
-              techSelected === t
-                ? "border-[#1c62ff] bg-[#1c62ff] text-white"
-                : "border-white/15 bg-white/5 hover:bg-white/10"
-            )}
-          >
-            {t}
-          </motion.button>
-        ))}
-      </div>
-
-      <p className="mb-2 text-xs font-bold tracking-wide text-[#8b9bb4] uppercase">
         Capacidad
       </p>
       <div className="mb-8 flex flex-wrap gap-2">
-        {getRamCapacities(techSelected as "DDR4" | "DDR5").map((c) => (
+        {getRamCapacities().map((c) => (
           <motion.button
             key={c.label}
             onClick={() => onCap(c.label, c.price)}

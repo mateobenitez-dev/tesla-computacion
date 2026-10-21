@@ -9,9 +9,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function CatalogoPage() {
-  const productos = (await getAllProducts()).filter(
-    (p) => p.categoria !== "uso" && p.categoria !== "mother"
-  );
+  const productos = (await getAllProducts()).filter((p) => p.categoria !== "uso");
   return (
     <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
       <p className="mb-3 text-[10px] font-semibold tracking-[0.2em] text-[#8b9bb4] uppercase">

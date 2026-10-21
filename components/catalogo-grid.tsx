@@ -11,6 +11,7 @@ const CATEGORIES: { value: Categoria | "all"; label: string }[] = [
   { value: "all", label: "Todos" },
   { value: "cpu", label: "Procesadores" },
   { value: "gpu", label: "Placas de Video" },
+  { value: "mother", label: "Motherboards" },
   { value: "gabinete", label: "Gabinetes" },
   { value: "cooler", label: "Coolers" },
   { value: "almacenamiento", label: "Almacenamiento" },

@@ -10,7 +10,6 @@ export interface BuilderState {
   cpu_price: number;
   cpu_has_igpu: boolean;
   cpu_gama: Gama | "";
-  ram_tech: "DDR4" | "DDR5";
   ram_cap: string;
   ram_price: number;
   gpu: string;
@@ -32,7 +31,6 @@ export interface BuilderState {
   setUso: (uso: string) => void;
   setNivel: (nivel: Gama) => void;
   setCpu: (nombre: string, price: number, hasIgpu: boolean, gama: Gama) => void;
-  setRamTech: (tech: "DDR4" | "DDR5") => void;
   setRamCap: (cap: string, price: number) => void;
   setGpu: (nombre: string, price: number, gama: Gama | "") => void;
   setGabinete: (nombre: string, price: number, gama: Gama) => void;
@@ -56,7 +54,6 @@ const initialState = {
   cpu_price: 0,
   cpu_has_igpu: true,
   cpu_gama: "" as Gama | "",
-  ram_tech: "DDR4" as const,
   ram_cap: "16 GB",
   ram_price: 60000,
   gpu: "",
@@ -92,7 +89,6 @@ export const useBuilderStore = create<BuilderState>()(
             ? { gpu: "", gpu_price: 0, gpu_gama: "" as const }
             : {}),
         })),
-      setRamTech: (ram_tech) => set({ ram_tech }),
       setRamCap: (ram_cap, ram_price) => set({ ram_cap, ram_price }),
       setGpu: (gpu, gpu_price, gpu_gama) => set({ gpu, gpu_price, gpu_gama }),
       setGabinete: (gabinete, gabinete_price, gabinete_gama) =>
@@ -126,7 +122,7 @@ export const useBuilderStore = create<BuilderState>()(
   })
 );
 
-const RAM_CAPACITIES_DDR4: { label: string; price: number }[] = [
+const RAM_CAPACITIES: { label: string; price: number }[] = [
   { label: "8 GB", price: 30000 },
   { label: "16 GB", price: 60000 },
   { label: "32 GB", price: 120000 },
@@ -134,19 +130,8 @@ const RAM_CAPACITIES_DDR4: { label: string; price: number }[] = [
   { label: "128 GB", price: 480000 },
 ];
 
-const RAM_CAPACITIES_DDR5: { label: string; price: number }[] = [
-  { label: "8 GB", price: 35000 },
-  { label: "16 GB", price: 65000 },
-  { label: "24 GB", price: 90000 },
-  { label: "32 GB", price: 130000 },
-  { label: "48 GB", price: 190000 },
-  { label: "64 GB", price: 260000 },
-  { label: "128 GB", price: 500000 },
-  { label: "256 GB", price: 950000 },
-];
-
-export function getRamCapacities(tech: "DDR4" | "DDR5" = "DDR4") {
-  return tech === "DDR5" ? RAM_CAPACITIES_DDR5 : RAM_CAPACITIES_DDR4;
+export function getRamCapacities() {
+  return RAM_CAPACITIES;
 }
 
 const ALMACENAMIENTO_HDD: { label: string; price: number; gama: Gama }[] = [
