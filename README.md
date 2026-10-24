@@ -4,6 +4,8 @@ Sitio web para un local de venta, armado y service de PCs en Santa Fe, Argentina
 
 **En vivo:** https://tesla-computacion.vercel.app
 
+![Inicio de Tesla Computación](docs/captura.jpg)
+
 ## Funcionalidades
 
 - **Armador de PC en 10 pasos** (uso, nivel, procesador, RAM, placa de video, gabinete, almacenamiento, cooler, fuente y checkout), con filtros por marca y gama, aviso de cuello de botella, cálculo de la fuente recomendada y envío del presupuesto armado por WhatsApp.
@@ -39,3 +41,7 @@ Para generar el hash de la contraseña del panel:
 ```bash
 node scripts/set-admin-password.mjs "tu-clave"
 ```
+
+## Autor
+
+Hecho por Mate ([matedev.com.ar](https://matedev.com.ar)).
