@@ -33,7 +33,7 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 border-t border-white/10 px-5 py-5 pb-24 text-center text-xs text-[#8b9bb4] md:flex-row md:justify-between md:pb-5">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 border-t border-white/10 px-5 py-5 text-center text-xs text-[#8b9bb4] md:flex-row md:justify-between">
         <p>© {new Date().getFullYear()} Tesla Computación. Todos los derechos reservados.</p>
         <p className="flex items-center gap-1">
           <MapPin size={14} />
@@ -46,6 +46,23 @@ export function Footer() {
             Barrio Constituyentes, Santa Fe Capital
           </a>
         </p>
+      </div>
+      <div className="border-t border-white/5 px-5 pt-4 pb-24 text-center md:pb-5">
+        <a
+          href="https://matedev.com.ar"
+          target="_blank"
+          rel="noopener"
+          className="group inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-[#8b9bb4] transition hover:text-white"
+        >
+          <span>Web hecha por</span>
+          <span className="font-heading font-bold tracking-wide text-white">
+            mate<span className="text-[#1c62ff]">.dev</span>
+          </span>
+          <span className="text-white/20">·</span>
+          <span className="underline decoration-white/20 underline-offset-4 group-hover:decoration-white">
+            ¿Querés una web así? →
+          </span>
+        </a>
       </div>
     </footer>
   );
