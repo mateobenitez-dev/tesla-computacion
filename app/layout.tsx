@@ -8,6 +8,7 @@ import { Navbar } from "@/components/navbar";
 import { BannerRotativo } from "@/components/banner-rotativo";
 import { Footer } from "@/components/footer";
 import { FloatingSocials } from "@/components/floating-socials";
+import { Intro } from "@/components/intro";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`dark ${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Intro />
         <TooltipProvider>
           <BackgroundGlow />
           <BannerRotativo />

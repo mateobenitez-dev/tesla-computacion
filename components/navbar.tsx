@@ -28,7 +28,8 @@ export function Navbar() {
             alt="Tesla Computación"
             width={140}
             height={40}
-            className="h-8 w-auto object-contain"
+            className="h-8 w-auto object-contain transition-opacity duration-300"
+            data-intro-target
             priority
           />
         </Link>

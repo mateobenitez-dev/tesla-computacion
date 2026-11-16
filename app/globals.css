@@ -214,3 +214,11 @@ html {
       0 8px 24px -8px rgba(28, 98, 255, 0.2);
   }
 }
+/* Intro de la home (components/intro.tsx) */
+html.intro-activa body {
+  overflow: hidden;
+}
+html.intro-activa [data-intro-target] {
+  opacity: 0;
+  transition: none;
+}
