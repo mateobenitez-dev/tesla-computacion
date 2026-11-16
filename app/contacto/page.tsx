@@ -42,6 +42,9 @@ export default function ContactoPage() {
         <h1 className="mb-4 text-3xl font-bold uppercase md:text-4xl">
           Hablemos de tu <span className="text-[#1c62ff]">próxima PC</span>
         </h1>
+        <p className="font-heading mb-5 text-lg font-semibold text-white md:text-xl">
+          Armando PCs desde 2019
+        </p>
         <p className="mx-auto mb-8 max-w-md text-sm text-[#8b9bb4]">
           Escribinos por WhatsApp y te asesoramos sin compromiso, o visitanos
           en el local en Barrio Constituyentes, Santa Fe Capital.

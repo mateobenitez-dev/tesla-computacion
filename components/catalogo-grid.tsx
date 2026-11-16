@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { Search, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { FadeIn } from "@/components/fade-in";
@@ -20,9 +22,46 @@ const CATEGORIES: { value: Categoria | "all"; label: string }[] = [
   { value: "fuente", label: "Fuentes" },
 ];
 
-export function CatalogoGrid({ productos }: { productos: Producto[] }) {
+const normalizar = (s: string) =>
+  s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+export function CatalogoGrid({ productos: todos }: { productos: Producto[] }) {
+  const [busqueda, setBusqueda] = useState("");
+  const terminos = normalizar(busqueda).split(/\s+/).filter(Boolean);
+  const productos = terminos.length
+    ? todos.filter((p) => {
+        const texto = normalizar(`${p.nombre} ${p.specs ?? ""}`);
+        return terminos.every((t) => texto.includes(t));
+      })
+    : todos;
+
   return (
     <Tabs defaultValue="all">
+      <div className="relative mb-5 max-w-md">
+        <Search
+          size={16}
+          className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-[#8b9bb4]"
+        />
+        <input
+          type="search"
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+          placeholder="Buscar producto, marca o modelo…"
+          aria-label="Buscar en el catálogo"
+          className="h-11 w-full rounded-full border border-white/15 bg-white/5 pr-10 pl-11 text-sm text-white placeholder:text-[#8b9bb4] outline-none focus:border-[#1c62ff] [&::-webkit-search-cancel-button]:hidden"
+        />
+        {busqueda && (
+          <button
+            type="button"
+            onClick={() => setBusqueda("")}
+            aria-label="Borrar búsqueda"
+            className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-1 text-[#8b9bb4] hover:text-white"
+          >
+            <X size={16} />
+          </button>
+        )}
+      </div>
+
       <TabsList className="mb-8 h-auto w-full justify-start gap-2 overflow-x-auto rounded-none bg-transparent p-0">
         {CATEGORIES.map((c) => (
           <TabsTrigger
@@ -50,7 +89,7 @@ export function CatalogoGrid({ productos }: { productos: Producto[] }) {
 
 function Grid({ productos }: { productos: Producto[] }) {
   if (productos.length === 0) {
-    return <p className="text-sm text-[#8b9bb4]">No hay productos en esta categoría.</p>;
+    return <p className="text-sm text-[#8b9bb4]">No encontramos productos con esa búsqueda en esta categoría.</p>;
   }
 
   return (
